@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "saving_shared_token": ["../src/index"],
+      "saving_shared_token/*": ["../src/*"]
+    }
+  }
+}

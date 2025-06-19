@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["Saving_shared_tokenModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.savingsharedtoken.Saving_shared_tokenModule"]
+  }
+}
