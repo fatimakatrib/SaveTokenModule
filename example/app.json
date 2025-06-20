@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "expo.modules.savingsharedtoken.example"
+      "bundleIdentifier": "expo.modules.savingsharedtoken"
     },
     "android": {
       "adaptiveIcon": {
@@ -22,7 +22,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "expo.modules.savingsharedtoken.example"
+      "package": "expo.modules.savingsharedtoken"
     },
     "web": {
       "favicon": "./assets/favicon.png"

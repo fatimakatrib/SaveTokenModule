@@ -1,36 +1,50 @@
-import { useEvent } from 'expo';
-import Saving_shared_token, { Saving_shared_tokenView } from 'saving_shared_token';
+import Saving_shared_token, { saveToken, getToken  as getTokenFromModule, resetToken } from 'saving_shared_token';
 import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { useEffect } from 'react';
 
 export default function App() {
-  const onChangePayload = useEvent(Saving_shared_token, 'onChange');
+
+  useEffect(() => {
+    async function fetchToken() {
+      const token = await getTokenFromModule();
+      console.log("Retrieved token:", token);
+    }
+
+    fetchToken();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
         <Text style={styles.header}>Module API Example</Text>
-        <Group name="Constants">
-          <Text>{Saving_shared_token.PI}</Text>
-        </Group>
-        <Group name="Functions">
-          <Text>{Saving_shared_token.hello()}</Text>
-        </Group>
+
         <Group name="Async functions">
           <Button
-            title="Set value"
+            title="Set Token"
             onPress={async () => {
-              await Saving_shared_token.setValueAsync('Hello from JS!');
+              console.log('start')
+              await saveToken("my-secret-token-mazne1111");
+              console.log("Token saved!");
             }}
           />
         </Group>
-        <Group name="Events">
-          <Text>{onChangePayload?.value}</Text>
+
+        <Group name="Fetch Token Again">
+          <Button
+            title="Get Token"
+            onPress={async () => {
+              const token = await getTokenFromModule();
+              console.log("Token:", token);
+            }}
+          />
         </Group>
-        <Group name="Views">
-          <Saving_shared_tokenView
-            url="https://www.example.com"
-            onLoad={({ nativeEvent: { url } }) => console.log(`Loaded: ${url}`)}
-            style={styles.view}
+
+          <Group name="reset">
+          <Button
+            title="reset Token"
+            onPress={async()=>{
+              await resetToken()
+            }}
           />
         </Group>
       </ScrollView>

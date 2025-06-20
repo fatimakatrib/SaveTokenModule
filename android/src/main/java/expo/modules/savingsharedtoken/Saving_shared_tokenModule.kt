@@ -1,50 +1,55 @@
 package expo.modules.savingsharedtoken
 
+import android.accounts.Account
+import android.accounts.AccountManager
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
-import java.net.URL
 
 class Saving_shared_tokenModule : Module() {
-  // Each module class must implement the definition function. The definition consists of components
-  // that describes the module's functionality and behavior.
-  // See https://docs.expo.dev/modules/module-api for more details about available components.
   override fun definition() = ModuleDefinition {
-    // Sets the name of the module that JavaScript code will use to refer to the module. Takes a string as an argument.
-    // Can be inferred from module's class name, but it's recommended to set it explicitly for clarity.
-    // The module will be accessible from `requireNativeModule('Saving_shared_token')` in JavaScript.
     Name("Saving_shared_token")
 
-    // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
-    Constants(
-      "PI" to Math.PI
-    )
+    Function("saveToken") { token: String ->
+      val accountType = "com.example.myapp" // Customize this string
+      val accountName = "Orbit Now"
+      val context = appContext.reactContext
+      val accountManager = AccountManager.get(context)
 
-    // Defines event names that the module can send to JavaScript.
-    Events("onChange")
+      // Try to find an existing account
+      val accounts = accountManager.getAccountsByType(accountType)
+      val account =
+              accounts.firstOrNull()
+                      ?: run {
+                        // Create a new account if none exist
+                        val newAccount = Account(accountName, accountType)
+                        val added = accountManager.addAccountExplicitly(newAccount, null, null)
+                        if (!added) {
+                          throw Exception("Failed to create account")
+                        }
+                        newAccount
+                      }
 
-    // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      "Hello world! 👋"
+      // Save the token as userData
+      accountManager.setUserData(account, "auth_token", token)
     }
 
-    // Defines a JavaScript function that always returns a Promise and whose native code
-    // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { value: String ->
-      // Send an event to JavaScript.
-      sendEvent("onChange", mapOf(
-        "value" to value
-      ))
+    Function("getToken") {
+      val accountType = "com.example.myapp"
+      val context = appContext.reactContext
+      val accountManager = AccountManager.get(context)
+
+      val accounts = accountManager.getAccountsByType(accountType)
+      val account = accounts.firstOrNull() ?: return@Function null
+
+      // Read the saved token
+      return@Function accountManager.getUserData(account, "auth_token")
     }
 
-    // Enables the module to be used as a native view. Definition components that are accepted as part of
-    // the view definition: Prop, Events.
-    View(Saving_shared_tokenView::class) {
-      // Defines a setter for the `url` prop.
-      Prop("url") { view: Saving_shared_tokenView, url: URL ->
-        view.webView.loadUrl(url.toString())
-      }
-      // Defines an event that the view can send to JavaScript.
-      Events("onLoad")
+    Function("clearToken") {
+      val account = Account("shared_token_account", "com.example.myapp")
+      val manager = AccountManager.get(appContext.reactContext!!)
+      manager.removeAccountExplicitly(account)
+      true
     }
   }
 }

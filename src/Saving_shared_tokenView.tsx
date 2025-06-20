@@ -1,11 +1,13 @@
-import { requireNativeView } from 'expo';
-import * as React from 'react';
+import Saving_shared_token from './Saving_shared_tokenModule';
 
-import { Saving_shared_tokenViewProps } from './Saving_shared_token.types';
+export function saveToken(token: string) {
+  return Saving_shared_token.saveToken(token);
+}
 
-const NativeView: React.ComponentType<Saving_shared_tokenViewProps> =
-  requireNativeView('Saving_shared_token');
+export function getToken(): Promise<string | null> {
+  return Saving_shared_token.getToken();
+}
 
-export default function Saving_shared_tokenView(props: Saving_shared_tokenViewProps) {
-  return <NativeView {...props} />;
+export function resetToken(): any {
+  return Saving_shared_token.clearToken();
 }

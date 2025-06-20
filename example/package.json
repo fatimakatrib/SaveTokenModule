@@ -11,6 +11,7 @@
   "dependencies": {
     "expo": "~53.0.12",
     "react": "19.0.0",
+    "expo-settings": "file:./expo-settings",
     "react-native": "0.79.4"
   },
   "devDependencies": {
