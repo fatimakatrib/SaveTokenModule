@@ -20,7 +20,10 @@
     "saving_shared_token",
     "Saving_shared_token"
   ],
-  "repository": "https://github.com/MazenelaliV/SaveTokenModule",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MazenelaliV/SaveTokenModule.git"
+  },
   "bugs": {
     "url": "https://github.com/MazenelaliV/SaveTokenModule/issues"
   },
