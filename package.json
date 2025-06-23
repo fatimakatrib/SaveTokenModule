@@ -4,7 +4,13 @@
   "description": "My new module",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "expo-module": true,
+  "expo-module": {
+    "android": {
+      "modules": [
+        "./Saving_shared_tokenModule.kt"
+      ]
+    }
+  },
   "react-native": {
     "android": "./android",
     "ios": "./ios"
@@ -17,7 +23,9 @@
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module",
     "open:ios": "xed example/ios",
-    "open:android": "open -a \"Android Studio\" example/android"
+    "open:android": "open -a \"Android Studio\" example/android",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "keywords": [
     "react-native",
@@ -35,11 +43,16 @@
   "author": "Orbit <mazen.elali@vianeos.com> ()",
   "license": "MIT",
   "homepage": "https://github.com/MazenelaliV/SaveTokenModule#readme",
-  "dependencies": {},
+  "dependencies": {
+    "expo": "~53.0.12",
+    "expo-dev-client": "~5.2.1",
+    "react": "19.0.0",
+    "react-native": "0.79.4"
+  },
   "devDependencies": {
     "@types/react": "~19.0.0",
-    "expo-module-scripts": "^4.1.6",
     "expo": "~53.0.0",
+    "expo-module-scripts": "^4.1.6",
     "react-native": "0.79.1"
   },
   "peerDependencies": {
