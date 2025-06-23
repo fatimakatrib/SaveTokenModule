@@ -31,10 +31,6 @@ if (useManagedAndroidSdkVersions) {
   }
 }
 
-dependencies {
-  implementation("expo.modules:expo-modules-core")
-}
-
 android {
   namespace "expo.modules.savingsharedtoken"
   defaultConfig {
