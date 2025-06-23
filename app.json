@@ -1,5 +1,8 @@
 {
   "android": {
     "package": "com.anonymous.saving_shared_token"
+  },
+  "ios": {
+    "bundleIdentifier": "com.anonymous.saving-shared-token"
   }
 }
