@@ -2,8 +2,9 @@
   "name": "saving_shared_token",
   "version": "0.1.0",
   "description": "My new module",
-   "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "expo-module": true,
   "react-native": {
     "android": "./android",
     "ios": "./ios"
