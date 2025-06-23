@@ -1,0 +1,48 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:2:1-20:12
+INJECTED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:2:1-20:12
+	package
+		INJECTED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.AUTHENTICATE_ACCOUNTS
+ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:3:5-80
+	android:name
+		ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:3:22-77
+uses-permission#android.permission.MANAGE_ACCOUNTS
+ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:4:5-74
+	android:name
+		ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:4:22-71
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:5:5-71
+	android:name
+		ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:5:22-68
+application
+ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:7:5-19:19
+service#expo.modules.savingsharedtoken.MyAuthenticatorService
+ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:8:1-17:11
+	android:exported
+		ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:10:3-27
+	android:name
+		ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:9:3-41
+intent-filter#action:name:android.accounts.AccountAuthenticator
+ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:11:3-13:19
+action#android.accounts.AccountAuthenticator
+ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:12:5-68
+	android:name
+		ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:12:13-65
+meta-data#android.accounts.AccountAuthenticator
+ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:14:3-16:45
+	android:resource
+		ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:16:5-42
+	android:name
+		ADDED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:15:5-57
+uses-sdk
+INJECTED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml
+INJECTED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml
