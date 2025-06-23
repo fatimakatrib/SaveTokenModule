@@ -2,8 +2,12 @@
   "name": "saving_shared_token",
   "version": "0.1.0",
   "description": "My new module",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+   "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "react-native": {
+    "android": "./android",
+    "ios": "./ios"
+  },
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",
