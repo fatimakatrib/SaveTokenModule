@@ -1,4 +1,4 @@
-import Saving_shared_token, { saveToken, getToken  as getTokenFromModule, resetToken } from 'saving_shared_token';
+import Saving_shared_token, { saveToken, getToken  as getTokenFromModule, resetToken   } from 'saving_shared_token';
 import { Button, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { useEffect } from 'react';
 

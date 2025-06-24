@@ -44,10 +44,11 @@
   "license": "MIT",
   "homepage": "https://github.com/MazenelaliV/SaveTokenModule#readme",
   "dependencies": {
-    "expo": "^53.0.12",
+    "expo": "*",
     "expo-dev-client": "~5.2.1",
-    "react": "19.0.0",
-    "react-native": "0.79.4"
+    "react": "*",
+    "react-native": "*",
+    "react-native-keychain": "^10.0.0"
   },
   "devDependencies": {
     "@types/react": "~19.0.0",

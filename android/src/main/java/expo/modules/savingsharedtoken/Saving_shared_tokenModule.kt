@@ -24,7 +24,7 @@ class Saving_shared_tokenModule : Module() {
                         val newAccount = Account(accountName, accountType)
                         val added = accountManager.addAccountExplicitly(newAccount, null, null)
                         if (!added) {
-                          throw Exception("Failed to create account")
+                          // throw Exception("Failed to create account") // may crash the app //
                         }
                         newAccount
                       }

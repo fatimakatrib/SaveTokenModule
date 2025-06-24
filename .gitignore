@@ -47,7 +47,8 @@ example/vendor/
 
 # node.js
 #
-node_modules/
+node_modules/*
+!node_modules/react-native-keychain
 npm-debug.log
 yarn-debug.log
 yarn-error.log
