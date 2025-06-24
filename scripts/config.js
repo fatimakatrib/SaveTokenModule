@@ -1,5 +1,5 @@
 const fs = require('node:fs');
-const folderPath = '../../android/app/src/main/res'
+const folderPath = '../../android/app/src/main/res/xml'
 const path = require('path');
 const fileName = 'authenticator.xml';
 const fullPath = path.join(folderPath, fileName);
