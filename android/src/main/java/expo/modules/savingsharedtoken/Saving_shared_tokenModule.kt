@@ -20,15 +20,14 @@ class Saving_shared_tokenModule : Module() {
       val account =
               accounts.firstOrNull()
                       ?: run {
-                        // Create a new account if none exist
                         val newAccount = Account(accountName, accountType)
                         val added = accountManager.addAccountExplicitly(newAccount, null, null)
                         if (!added) {
-                          // throw Exception("Failed to create account") // may crash the app //
+                          Log.e("SavingSharedToken", "Failed to recreate account")
+                          return@Function false
                         }
                         newAccount
                       }
-
       // Save the token as userData
       accountManager.setUserData(account, "auth_token", token)
     }
@@ -38,11 +37,20 @@ class Saving_shared_tokenModule : Module() {
       val context = appContext.reactContext
       val accountManager = AccountManager.get(context)
 
-      val accounts = accountManager.getAccountsByType(accountType)
-      val account = accounts.firstOrNull() ?: return@Function null
+      return@Function try {
+        val accounts = accountManager.getAccountsByType(accountType)
+        val account = accounts.firstOrNull()
 
-      // Read the saved token
-      return@Function accountManager.getUserData(account, "auth_token")
+        if (account == null) {
+          Log.w("SavingSharedToken", "No account found – likely removed from settings.")
+          return@Function null
+        }
+
+        accountManager.getUserData(account, "auth_token")
+      } catch (e: Exception) {
+        Log.e("SavingSharedToken", "Error reading account: ${e.message}", e)
+        null
+      }
     }
 
     Function("clearToken") {
