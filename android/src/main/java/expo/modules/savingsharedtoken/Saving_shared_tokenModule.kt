@@ -14,43 +14,39 @@ class Saving_shared_tokenModule : Module() {
     Name("Saving_shared_token")
 
     Function("saveToken") { token: String ->
-      try {
+         val account = Account("MyAccount", "com.example.myapp")
         val context = appContext.reactContext ?: return@Function false
         val accountManager = AccountManager.get(context)
 
-        val accounts = accountManager.getAccountsByType(accountType)
-        val account =
-                accounts.firstOrNull()
-                        ?: run {
-                          val newAccount = Account(accountName, accountType)
-                          val added = accountManager.addAccountExplicitly(newAccount, null, null)
-                          if (!added) {
-                            return@Function false
-                          }
-                          newAccount
-                        }
-
-        accountManager.setUserData(account, "auth_token", token)
-        true
-      } catch (e: Exception) {
-        e.printStackTrace()
-        false
-      }
+        if (accountManager.addAccountExplicitly(account, null, null)) {
+            accountManager.setAuthToken(account, "test", "me")
+        }
     }
 
     Function("getToken") {
       val context = appContext.reactContext!!
-      val accountManager = AccountManager.get(context)
-
-      try {
-        val accounts = accountManager.getAccountsByType(accountType)
-        val account = accounts.firstOrNull() ?: return@Function null
-
-        accountManager.getUserData(account, "auth_token")
-      } catch (e: Exception) {
-        null
-      }
+      val am = AccountManager.get(context)
+            val accounts = am.getAccountsByType("com.example.myapp")
+            var token = "starter"
+            if (accounts.isNotEmpty()) {
+                 token = am.blockingGetAuthToken(accounts[0], "test", true)
+            }
+            return@Function token
     }
+
+    //     Function("getToken") {
+    //   val context = appContext.reactContext!!
+    //   val accountManager = AccountManager.get(context)
+
+    //   try {
+    //     val accounts = accountManager.getAccountsByType(accountType)
+    //     val account = accounts.firstOrNull() ?: return@Function null
+
+    //     accountManager.getUserData(account, "auth_token")
+    //   } catch (e: Exception) {
+    //     null
+    //   }
+    // }
 
     Function("clearToken") {
       // val context = appContext.reactContext!!
