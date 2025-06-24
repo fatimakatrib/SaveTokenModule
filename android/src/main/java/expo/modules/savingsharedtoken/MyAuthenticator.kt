@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.accounts.Account
 import android.accounts.AccountAuthenticatorResponse
 
-class MyAuthenticator(context: Context) : AbstractAccountAuthenticator(context) {
+class MyAuthenticator(private val context: Context) : AbstractAccountAuthenticator(context) {
     override fun editProperties(response: AccountAuthenticatorResponse?, accountType: String?) = null
     override fun addAccount(response: AccountAuthenticatorResponse?, accountType: String?, authTokenType: String?, requiredFeatures: Array<out String>?, options: Bundle?) = null
     override fun confirmCredentials(response: AccountAuthenticatorResponse?, account: Account?, options: Bundle?) = null
