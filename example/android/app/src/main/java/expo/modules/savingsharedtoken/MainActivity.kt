@@ -1,4 +1,4 @@
-package expo.modules.savingsharedtoken.example
+package expo.modules.savingsharedtoken
 
 import android.os.Build
 import android.os.Bundle

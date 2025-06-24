@@ -27,7 +27,13 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>expo.modules.savingsharedtoken.example</string>
+          <string>expo.modules.savingsharedtoken</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>exp+savingsharedtoken-example</string>
         </array>
       </dict>
     </array>
