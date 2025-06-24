@@ -26,7 +26,7 @@
     "open:android": "open -a \"Android Studio\" example/android",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "postinstall": "scripts/config.js"
+    "postinstall": "node scripts/config.js"
   },
   "keywords": [
     "react-native",
