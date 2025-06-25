@@ -7,29 +7,44 @@ import expo.modules.kotlin.modules.ModuleDefinition
 
 class Saving_shared_tokenModule : Module() {
 
-  private val accountType = "com.example.myapp" // Customize this
-  private val accountName = "Orbit Now"
+
+  companion object {
+    private const val ACCOUNT_TYPE = "com.example.myapp"
+    private const val ACCOUNT_NAME = "Orbit Now"
+    private const val AUTH_TOKEN_TYPE = "test"
+    private const val USER_DATA_LAST_KEY = "last_token"
+  }
+
 
   override fun definition() = ModuleDefinition {
     Name("Saving_shared_token")
 
+ 
     Function("saveToken") { token: String ->
-         val account = Account("MyAccount", "com.example.myapp")
-        val context = appContext.reactContext ?: return@Function false
-        val accountManager = AccountManager.get(context)
+      val context = appContext.reactContext ?: return@Function false
+      val am = AccountManager.get(context)
+      val account = Account(ACCOUNT_NAME, ACCOUNT_TYPE)
 
-        if (accountManager.addAccountExplicitly(account, null, null)) {
-            accountManager.setAuthToken(account, "test", token)
+      if (am.getAccountsByType(ACCOUNT_TYPE).none { it.name == ACCOUNT_NAME }) {
+        if (!am.addAccountExplicitly(account, null, null)) {
+          return@Function false
         }
+      }
+
+      am.invalidateAuthToken(ACCOUNT_TYPE,  null)
+      am.setAuthToken(account, AUTH_TOKEN_TYPE, token)
+      am.setUserData(account, USER_DATA_LAST_KEY, token) 
+
+      return@Function true
     }
 
     Function("getToken") {
       val context = appContext.reactContext!!
       val am = AccountManager.get(context)
-            val accounts = am.getAccountsByType("com.example.myapp")
+            val accounts = am.getAccountsByType(ACCOUNT_TYPE)
             var token = "starter"
             if (accounts.isNotEmpty()) {
-                 token = am.blockingGetAuthToken(accounts[0], "test", true)
+                 token = am.blockingGetAuthToken(accounts[0], AUTH_TOKEN_TYPE, true)
             }
             return@Function token
     }
