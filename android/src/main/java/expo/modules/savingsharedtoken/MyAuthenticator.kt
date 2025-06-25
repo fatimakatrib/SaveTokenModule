@@ -37,6 +37,15 @@ class MyAuthenticator(private val context: Context) : AbstractAccountAuthenticat
             Bundle().apply { putString(AccountManager.KEY_ERROR_MESSAGE, "Token not available.") }
         }
     }
+    override fun getAccountRemovalAllowed(
+            response: AccountAuthenticatorResponse,
+            account: Account
+    ): Bundle {
+        // Replace this with whatever logic you need (wipe tokens, etc.)
+        val result = super.getAccountRemovalAllowed(response, account)
+        result.putBoolean(AccountManager.KEY_BOOLEAN_RESULT, true) // ✅ allow
+        return result
+    }
 
     override fun getAuthTokenLabel(authTokenType: String): String = authTokenType
     override fun confirmCredentials(

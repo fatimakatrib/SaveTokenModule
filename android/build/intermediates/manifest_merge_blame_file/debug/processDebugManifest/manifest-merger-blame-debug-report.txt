@@ -18,9 +18,9 @@
 10-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:6:18-67
 11
 12    <application>
-12-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:9:5-24:19
+12-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:9:5-25:19
 13        <service
-13-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:10:1-20:11
+13-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:10:1-21:11
 14            android:name="expo.modules.savingsharedtoken.MyAuthenticatorService"
 14-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:11:5-43
 15            android:exported="true"
@@ -35,11 +35,11 @@
 19            </intent-filter>
 20
 21            <meta-data
-21-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:17:5-19:49
+21-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:18:5-20:49
 22                android:name="android.accounts.AccountAuthenticator"
-22-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:18:9-61
+22-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:19:9-61
 23                android:resource="@xml/authenticator" />
-23-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:19:9-46
+23-->/Users/mazen/Desktop/saving_shared_token/android/src/main/AndroidManifest.xml:20:9-46
 24        </service>
 25    </application>
 26

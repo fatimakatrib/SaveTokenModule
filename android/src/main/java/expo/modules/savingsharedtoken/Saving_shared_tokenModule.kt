@@ -19,7 +19,7 @@ class Saving_shared_tokenModule : Module() {
         val accountManager = AccountManager.get(context)
 
         if (accountManager.addAccountExplicitly(account, null, null)) {
-            accountManager.setAuthToken(account, "test", "me")
+            accountManager.setAuthToken(account, "test", token)
         }
     }
 
