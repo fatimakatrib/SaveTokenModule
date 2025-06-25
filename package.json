@@ -54,7 +54,6 @@
     "expo": "*",
     "react": "*",
     "react-native": "*",
-    "expo-dev-client": "~5.2.1",
     "react-native-keychain": "^10.0.0"
   }
 }
