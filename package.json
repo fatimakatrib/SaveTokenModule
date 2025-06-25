@@ -44,13 +44,6 @@
   "author": "Orbit <mazen.elali@vianeos.com> ()",
   "license": "MIT",
   "homepage": "https://github.com/MazenelaliV/SaveTokenModule#readme",
-  "dependencies": {
-    "expo": "*",
-    "expo-dev-client": "~5.2.1",
-    "react": "*",
-    "react-native": "*",
-    "react-native-keychain": "^10.0.0"
-  },
   "devDependencies": {
     "@types/react": "~19.0.0",
     "expo": "~53.0.0",
@@ -60,6 +53,8 @@
   "peerDependencies": {
     "expo": "*",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "expo-dev-client": "~5.2.1",
+    "react-native-keychain": "^10.0.0"
   }
 }
