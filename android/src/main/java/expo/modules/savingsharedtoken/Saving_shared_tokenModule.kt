@@ -42,7 +42,7 @@ class Saving_shared_tokenModule : Module() {
       val context = appContext.reactContext!!
       val am = AccountManager.get(context)
             val accounts = am.getAccountsByType(ACCOUNT_TYPE)
-            var token = "starter"
+            var token = null
             if (accounts.isNotEmpty()) {
                  token = am.blockingGetAuthToken(accounts[0], AUTH_TOKEN_TYPE, true)
             }
@@ -64,13 +64,16 @@ class Saving_shared_tokenModule : Module() {
     // }
 
     Function("clearToken") {
-      // val context = appContext.reactContext!!
-      // val accountManager = AccountManager.get(context)
-      // val accounts = accountManager.getAccountsByType(accountType)
-      // val account = accounts.firstOrNull() ?: return@Function false
+      val context = appContext.reactContext!!
+      val am = AccountManager.get(context)
+      val accounts = am.getAccountsByType(ACCOUNT_TYPE)
 
-      // accountManager.removeAccountExplicitly(account)
-      // true
+      if (accounts.isNotEmpty()) {
+        val account = accounts[0]
+        return@Function accountManager.removeAccountExplicitly(account)
+      }
+
+      return@Function false
     }
   }
 }
