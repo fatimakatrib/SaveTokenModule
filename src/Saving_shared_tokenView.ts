@@ -2,11 +2,11 @@ import { Platform } from "react-native";
 import Saving_shared_token from "./Saving_shared_tokenModule";
 import * as Keychain from "react-native-keychain";
 
+const access_Group = "com.wwork.orbitapp";
 export async function saveToken(token: string) {
   if (Platform.OS === "ios") {
     await Keychain.setGenericPassword("token", token, {
-      accessControl: Keychain.ACCESS_CONTROL.BIOMETRY_ANY,
-      accessible: Keychain.ACCESSIBLE.WHEN_UNLOCKED,
+      accessGroup: access_Group,
     });
   } else {
     await Saving_shared_token.saveToken(token);
@@ -15,7 +15,9 @@ export async function saveToken(token: string) {
 
 export async function getToken(): Promise<string | null> {
   if (Platform.OS === "ios") {
-    const credentials = await Keychain.getGenericPassword();
+    const credentials = await Keychain.getGenericPassword({
+      accessGroup: access_Group,
+    });
     if (credentials) return credentials?.password ?? null;
     else return null;
   } else {
@@ -25,7 +27,9 @@ export async function getToken(): Promise<string | null> {
 
 export async function resetToken(): Promise<void> {
   if (Platform.OS === "ios") {
-    await Keychain.resetGenericPassword();
+    await Keychain.resetGenericPassword({
+      accessGroup: access_Group,
+    });
   } else {
     await Saving_shared_token.clearToken();
   }

@@ -42,7 +42,7 @@ class Saving_shared_tokenModule : Module() {
       val context = appContext.reactContext!!
       val am = AccountManager.get(context)
             val accounts = am.getAccountsByType(ACCOUNT_TYPE)
-            var token = null
+            var token: String? = null
             if (accounts.isNotEmpty()) {
                  token = am.blockingGetAuthToken(accounts[0], AUTH_TOKEN_TYPE, true)
             }
@@ -70,7 +70,7 @@ class Saving_shared_tokenModule : Module() {
 
       if (accounts.isNotEmpty()) {
         val account = accounts[0]
-        return@Function accountManager.removeAccountExplicitly(account)
+        return@Function am.removeAccountExplicitly(account)
       }
 
       return@Function false
