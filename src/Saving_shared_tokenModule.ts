@@ -17,7 +17,7 @@ let AndroidTokenModule: {
 } | null = null;
 
 if (Platform.OS === "android") {
-  AndroidTokenModule = requireNativeModule("SharedTokenModule");
+  AndroidTokenModule = requireNativeModule("Saving_shared_token");
 }
 
 const SharedTokenModule = {
