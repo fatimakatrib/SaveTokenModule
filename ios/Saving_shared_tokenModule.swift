@@ -12,7 +12,7 @@ public class Saving_shared_tokenModule: Module {
 
     // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
     Function("saveToken") { (token: String) in
-      let service = "com.yourapp.token"
+      let service = "com.wwork.orbitnowapp"
       let account = "userToken"
 
       let tokenData = token.data(using: .utf8)!
@@ -33,7 +33,7 @@ public class Saving_shared_tokenModule: Module {
     }
 
     Function("getToken") { () -> String? in
-      let service = "com.yourapp.token"
+      let service = "com.wwork.orbitnowapp"
       let account = "userToken"
 
       let query: [String: Any] = [
@@ -53,6 +53,22 @@ public class Saving_shared_tokenModule: Module {
         return nil
       }
 
+    }
+    Function("clearToken") {
+      let service = "com.wwork.orbitnowapp"
+      let account = "userToken"
+
+      let query: [String: Any] = [
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrService as String: service,
+        kSecAttrAccount as String: account,
+      ]
+
+      let status = SecItemDelete(query as CFDictionary)
+
+      if status != errSecSuccess && status != errSecItemNotFound {
+        print("Keychain delete failed with status: \(status)")
+      }
     }
   }
 }
